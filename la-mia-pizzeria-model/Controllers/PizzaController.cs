@@ -17,5 +17,13 @@ namespace la_mia_pizzeria_model.Controllers
             }
             return View("Index", menu);
         }
+
+        public IActionResult Show(long id)
+        {
+            using var ctx = new PizzaContext();
+            var menuItem = ctx.Pizzas.Find(id);
+
+            return View(menuItem);
+        }
     }
 }
