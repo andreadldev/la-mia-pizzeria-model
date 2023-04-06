@@ -1,32 +1,21 @@
 ﻿using la_mia_pizzeria_model.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 
 namespace la_mia_pizzeria_model.Controllers
 {
     public class PizzaController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public PizzaController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
         public IActionResult Index()
         {
-            return View();
-        }
+            ViewData["Title"] = "Homepage";
+            using var ctx = new PizzaContext();
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var menu = ctx.Pizzas.ToArray();
+            if (!ctx.Pizzas.Any())
+            {
+                ViewData["Message"] = "Nessun risultato trovato";
+            }
+            return View("Index", menu);
         }
     }
 }

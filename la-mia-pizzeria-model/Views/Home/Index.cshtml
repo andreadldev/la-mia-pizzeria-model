@@ -46,18 +46,19 @@
 <div class="container p-3 bg-light" id="menu">
     <div class="text-center py-4 text-danger">
         <h1>Menù pizze</h1>
+        <h2>@ViewData["Message"]</h2>
     </div>
     <div class="row d-flex flex-wrap">
         @for (int i = 0; i < menuList.Length; i++)
         {
-            <div class="col-12 col-md-6 d-flex align-items-center py-3 justify-content-center">
-                <img class="rounded-circle" width="150" src="@menuList[i].Img" alt="...">
-                <div class="d-flex flex-column px-2">
-                    <h5>@menuList[i].Name</h5>
-                    <p>@menuList[i].Description</p>
-                    <span>@($"{menuList[i].Price} €")</span>
-                </div>
+        <div class="col-12 col-md-6 d-flex align-items-center py-3 justify-content-center">
+            <img class="rounded-circle" width="150" src="@menuList[i].Img" alt="...">
+            <div class="d-flex flex-column px-2">
+                <h5>@menuList[i].Name</h5>
+                <p>@menuList[i].Description</p>
+                <span>@($"{menuList[i].Price} €")</span>
             </div>
+        </div>
         }
     </div>
 </div>

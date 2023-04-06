@@ -1,4 +1,6 @@
-﻿namespace la_mia_pizzeria_model.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace la_mia_pizzeria_model.Models
 {
     public class Pizza
     {
@@ -10,6 +12,8 @@
             Price = price;
         }
 
+        [Key]
+        public long Id { get; set; }
         public string Img { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
